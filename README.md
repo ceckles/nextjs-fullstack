@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
+#Setup
+create a .env file in the root directory and add your database connection string
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Neon Auth environment variables for Next.js
+NEXT_PUBLIC_STACK_PROJECT_ID=''
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=''
+STACK_SECRET_SERVER_KEY=''
+
+# Database owner connection string
+DATABASE_URL='postgresql://'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#SEED DB
+```bash
+node prisma/seed.ts
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#Install Dependencies
+`npm i`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`npm prisma generate`
 
-## Learn More
+#Prisma Commands
+`npx prisma migrate dev --name init` #Run this command to create your database and run migrations
 
-To learn more about Next.js, take a look at the following resources:
+`npx prisma studio` #Run this command to open Prisma Studio and view your database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npx prisma generate` #Run this command to regenerate Prisma Client after changing your schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`npx prisma db push` #Run this command to push your Prisma schema state to the database without generating a migration
 
-## Deploy on Vercel
+`npx prisma migrate reset` #Run this command to reset your database and apply all migrations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`npx prisma migrate dev --name <migration_name>` #Run this command to create a new migration with the specified name
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`npx prisma db pull` #Run this command to update your Prisma schema based on the current state of your database
