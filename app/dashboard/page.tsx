@@ -53,12 +53,12 @@ export default async function DashboardPage() {
 
     const weekEnd = new Date(weekStart);
     weekEnd.setDate(weekEnd.getDate() + 6);
-    weekStart.setHours(23, 59, 59, 999);
+    weekEnd.setHours(23, 59, 59, 999);
 
     const weekLabel = `${String(weekStart.getMonth() + 1).padStart(
       2,
       "0",
-    )}/${String(weekStart.getDate() + 1).padStart(2, "0")}`;
+    )}/${String(weekStart.getDate()).padStart(2, "0")}`;
 
     const weekProducts = allProducts.filter((product) => {
       const productDate = new Date(product.createdAt);
@@ -163,7 +163,7 @@ export default async function DashboardPage() {
               </h2>
             </div>
             <div className="space-y-3">
-              {recent.map((product, _key) => {
+              {recent.map((product, key) => {
                 const stockLevel =
                   product.quantity === 0
                     ? 0
