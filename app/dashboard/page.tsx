@@ -4,6 +4,20 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { TrendingUp } from "lucide-react";
 
+/**
+ * Dashboard page component - Main overview page for inventory management.
+ * 
+ * Displays comprehensive inventory analytics including:
+ * - Key metrics (total products, total value, low stock items)
+ * - Weekly product creation trends chart
+ * - Recent products with stock level indicators
+ * - Stock efficiency visualization (in stock, low stock, out of stock percentages)
+ * 
+ * This page requires authentication and will redirect unauthenticated users
+ * to the sign-in page.
+ * 
+ * @returns {Promise<JSX.Element>} The dashboard page with inventory analytics
+ */
 export default async function DashboardPage() {
   const user = await getCurrentUser();
   const userId = user.id;
