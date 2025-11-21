@@ -3,22 +3,7 @@ import { BarChart3, Package, Plus, Settings } from "lucide-react";
 import Link from "next/link";
 
 /**
- * Sidebar navigation component for the inventory management application.
- * 
- * Displays a fixed sidebar with navigation links for Dashboard, Inventory,
- * Add Product, and Settings pages. Includes a user button at the bottom
- * for account management.
- * 
- * @param {Object} props - Component props
- * @param {string} [props.currentPath="/dashboard"] - The current active route path
- *   used to highlight the active navigation item
- * 
- * @returns {JSX.Element} The sidebar navigation component
- * 
- * @example
- * ```tsx
- * <Sidebar currentPath="/dashboard" />
- * ```
+ * Fixed sidebar navigation. Pass the current path to highlight the active link.
  */
 export default function Sidebar({
   currentPath = "/dashboard",

@@ -1,16 +1,8 @@
 /**
- * Loading component displayed during page transitions and data fetching.
+ * Loading state shown while fetching user data. Stack Auth uses Suspense
+ * internally, so this gets rendered during auth checks.
  * 
- * This component is automatically rendered by Next.js Suspense boundaries
- * while user data and other server-side data is being fetched. Stack Auth
- * uses React Suspense internally, which triggers this loading state.
- * 
- * Currently renders an empty fragment, but can be customized to show
- * loading spinners or skeletons.
- * 
- * @see {@link https://nextjs.org/docs/app/api-reference/file-conventions/loading} Next.js Loading UI
- * 
- * @returns {JSX.Element} Empty fragment (can be customized for loading UI)
+ * Currently just an empty fragment - can add a spinner here if needed.
  */
 export default function Loading() {
 

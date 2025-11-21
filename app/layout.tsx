@@ -4,43 +4,24 @@ import { stackClientApp } from "../stack/client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-/**
- * Geist Sans font configuration for the application.
- * Provides a modern, clean sans-serif font family.
- */
+// Font setup - Geist Sans for UI, Geist Mono for code
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-/**
- * Geist Mono font configuration for the application.
- * Provides a monospace font family for code and technical content.
- */
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
-/**
- * Root layout metadata for SEO and browser display.
- */
 export const metadata: Metadata = {
-  title: "Full Stack Inventory Management System",
-  description: "Next.js + TailwindCSS + Stack Auth + Prisma + Neon",
+  title: "Inventory Management",
+  description: "Streamline your inventory tracking with our powerful, easy-to-use management system",
 };
 
 /**
- * Root layout component that wraps all pages in the application.
- * 
- * Sets up the HTML structure, fonts, and provides Stack Auth context
- * to all child components. This is the top-level component in the Next.js
- * app directory structure.
- * 
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - The page content to render
- * 
- * @returns {JSX.Element} The root layout with Stack Auth providers
+ * Root layout - wraps all pages. Sets up fonts and Stack Auth providers.
  */
 export default function RootLayout({
   children,

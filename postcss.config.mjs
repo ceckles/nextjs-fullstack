@@ -1,11 +1,5 @@
 /**
- * PostCSS configuration for Tailwind CSS processing.
- * 
- * Configures PostCSS to use the Tailwind CSS PostCSS plugin for processing
- * CSS files. This enables Tailwind's utility classes and directives to be
- * transformed into actual CSS during the build process.
- * 
- * @type {import('postcss-load-config').Config}
+ * PostCSS config for Tailwind. Processes Tailwind classes into CSS during build.
  */
 const config = {
   plugins: {

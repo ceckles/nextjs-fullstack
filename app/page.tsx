@@ -3,13 +3,7 @@ import { stackServerApp } from "@/stack/server";
 import { redirect } from "next/navigation";
 
 /**
- * Home page component - Landing page for the inventory management application.
- * 
- * Displays a welcome screen with information about the application and
- * navigation options. If a user is already authenticated, they are automatically
- * redirected to the dashboard.
- * 
- * @returns {Promise<JSX.Element>} The home page component
+ * Landing page. Redirects to dashboard if user is already logged in.
  */
 export default async function Home() {
    const user = await stackServerApp.getUser();
