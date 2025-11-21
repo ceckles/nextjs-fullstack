@@ -10,15 +10,15 @@ export async function deleteProduct(formData: FormData) {
     if (!user) {
         redirect("/sign-in");
     }
-    
+
     const id = formData.get("productId");
-    
+
     if (!id || typeof id !== "string" || id === "") {
         throw new Error("Product ID is required");
     }
 
     await prisma.product.deleteMany({
-        where: { 
+        where: {
             id: id,
             userId: user.id,
         },
