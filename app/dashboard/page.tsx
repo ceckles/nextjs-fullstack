@@ -33,12 +33,15 @@ export default async function DashboardPage() {
     0,
   );
 
-  const inStockCount = allProducts.filter((p) => Number(p.quantity) > 5).length;
+  const inStockCount = allProducts.filter(
+    (p: { price: unknown; quantity: unknown }) => Number(p.quantity) > 5,
+  ).length;
   const lowStockCount = allProducts.filter(
-    (p) => Number(p.quantity) <= 5 && Number(p.quantity) >= 1,
+    (p: { price: unknown; quantity: unknown }) =>
+      Number(p.quantity) <= 5 && Number(p.quantity) >= 1,
   ).length;
   const outOfStockCount = allProducts.filter(
-    (p) => Number(p.quantity) === 0,
+    (p: { price: unknown; quantity: unknown }) => Number(p.quantity) === 0,
   ).length;
 
   const inStockPercentage =
