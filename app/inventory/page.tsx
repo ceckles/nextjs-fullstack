@@ -4,6 +4,7 @@ import Sidebar from "@/components/sidebar";
 import { deleteProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { Product } from "@prisma/client";
 
 /**
  * Inventory page - displays all products in the inventory.
@@ -131,7 +132,7 @@ export default async function InventoryPage({
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {items.map((product) => (
+                {items.map((product: Product) => (
                   <tr
                     key={product.id}
                     className={

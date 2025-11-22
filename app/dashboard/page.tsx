@@ -3,6 +3,7 @@ import ProductsChart from "@/components/products-chart";
 import Sidebar from "@/components/sidebar";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { Product } from "@prisma/client";
 
 /**
  * Main dashboard page. Shows inventory stats, product trends, and stock levels.
@@ -90,7 +91,6 @@ export default async function DashboardPage() {
     take: 5,
   });
 
-  console.log(totalValue);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -176,7 +176,7 @@ export default async function DashboardPage() {
               </h2>
             </div>
             <div className="space-y-3">
-              {recent.map((product, key) => {
+              {recent.map((product: Product) => {
                 const stockLevel =
                   product.quantity === 0
                     ? 0
