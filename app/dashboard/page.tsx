@@ -3,7 +3,6 @@ import ProductsChart from "@/components/products-chart";
 import Sidebar from "@/components/sidebar";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { Product } from "@prisma/client";
 
 /**
  * Main dashboard page. Shows inventory stats, product trends, and stock levels.
@@ -91,6 +90,7 @@ export default async function DashboardPage() {
     take: 5,
   });
 
+  type Product = Awaited<ReturnType<typeof prisma.product.findMany>>[number];
 
   return (
     <div className="min-h-screen bg-gray-50">

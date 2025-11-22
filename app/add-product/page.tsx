@@ -4,8 +4,7 @@ import { createProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 
 export default async function AddProductPage() {
-  const user = await getCurrentUser();
-  const userId = user.id;
+  await getCurrentUser(); // Ensure user is authenticated
 
   return (
     <div className="min-h-screen bg-gray-50">

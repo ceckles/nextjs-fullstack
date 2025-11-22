@@ -4,7 +4,6 @@ import Sidebar from "@/components/sidebar";
 import { deleteProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { Product } from "@prisma/client";
 
 /**
  * Inventory page - displays all products in the inventory.
@@ -40,6 +39,8 @@ export default async function InventoryPage({
       take: pageSize,
     }),
   ]);
+
+  type Product = Awaited<ReturnType<typeof prisma.product.findMany>>[number];
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
