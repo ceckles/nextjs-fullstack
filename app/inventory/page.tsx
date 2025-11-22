@@ -32,7 +32,12 @@ export default async function InventoryPage({
   const [totalCount, items] = await Promise.all([
     prisma.product.count({ where }),
     //
-    prisma.product.findMany({ where, orderBy: { createdAt: "desc" }, skip: (page - 1) * pageSize, take: pageSize }),
+    prisma.product.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    }),
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
@@ -147,7 +152,7 @@ export default async function InventoryPage({
           </div>
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="bg-white rounded-lg border border-grey-200 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
               <Pagination
                 totalPages={totalPages}
                 currentPage={page}
