@@ -2,7 +2,6 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { ca } from "zod/locales";
 import { getCurrentUser } from "../auth";
 import { prisma } from "../prisma";
 
@@ -61,6 +60,7 @@ export async function createProduct(formData: FormData) {
     await prisma.product.create({
       data: { ...parsed.data, userId: user.id },
     });
+    redirect("/inventory");
   } catch (error) {
     console.error("Error creating product:", error);
     throw new Error("Failed to create product");
