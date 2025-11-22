@@ -1,8 +1,8 @@
+import { TrendingUp } from "lucide-react";
 import ProductsChart from "@/components/products-chart";
 import Sidebar from "@/components/sidebar";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { TrendingUp } from "lucide-react";
 
 /**
  * Main dashboard page. Shows inventory stats, product trends, and stock levels.
@@ -28,7 +28,8 @@ export default async function DashboardPage() {
   ]);
 
   const totalValue = allProducts.reduce(
-    (sum, product) => sum + Number(product.price) * Number(product.quantity),
+    (sum: number, product) =>
+      sum + Number(product.price) * Number(product.quantity),
     0,
   );
 
