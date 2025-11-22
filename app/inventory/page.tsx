@@ -1,4 +1,4 @@
-import { M_PLUS_1 } from "next/font/google";
+import Link from "next/link";
 import Pagination from "@/components/pagination";
 import Sidebar from "@/components/sidebar";
 import { deleteProduct } from "@/lib/actions/products";
@@ -61,12 +61,42 @@ export default async function InventoryPage({
         <div className="space-y-6">
           {/* Search Bar */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <form className="flex gap-2" action="/inventory" method="GET">
-              <input
-                name="q"
-                placeholder="Search Products"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent"
-              />
+            <form
+              className="flex gap-2 items-center"
+              action="/inventory"
+              method="GET"
+            >
+              <div className="flex-1 relative">
+                <input
+                  name="q"
+                  defaultValue={q}
+                  placeholder="Search Products"
+                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:border-transparent"
+                />
+                {q && (
+                  <Link
+                    href="/inventory"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    title="Clear search"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <title>Clear search</title>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </Link>
+                )}
+              </div>
               <button
                 className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
                 type="submit"
