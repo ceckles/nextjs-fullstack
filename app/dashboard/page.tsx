@@ -8,6 +8,12 @@ import { prisma } from "@/lib/prisma";
  * Main dashboard page. Shows inventory stats, product trends, and stock levels.
  * Requires auth - redirects to sign-in if not logged in.
  */
+type ProductSummary = {
+  price: unknown;
+  quantity: unknown;
+  createdAt: Date;
+};
+
 export default async function DashboardPage() {
   const user = await getCurrentUser();
   const userId = user.id;
@@ -28,20 +34,19 @@ export default async function DashboardPage() {
   ]);
 
   const totalValue = allProducts.reduce(
-    (sum: number, product: { price: unknown; quantity: unknown }) =>
+    (sum: number, product: ProductSummary) =>
       sum + Number(product.price) * Number(product.quantity),
     0,
   );
 
   const inStockCount = allProducts.filter(
-    (p: { price: unknown; quantity: unknown }) => Number(p.quantity) > 5,
+    (p: ProductSummary) => Number(p.quantity) > 5,
   ).length;
   const lowStockCount = allProducts.filter(
-    (p: { price: unknown; quantity: unknown }) =>
-      Number(p.quantity) <= 5 && Number(p.quantity) >= 1,
+    (p: ProductSummary) => Number(p.quantity) <= 5 && Number(p.quantity) >= 1,
   ).length;
   const outOfStockCount = allProducts.filter(
-    (p: { price: unknown; quantity: unknown }) => Number(p.quantity) === 0,
+    (p: ProductSummary) => Number(p.quantity) === 0,
   ).length;
 
   const inStockPercentage =
@@ -68,7 +73,7 @@ export default async function DashboardPage() {
       "0",
     )}/${String(weekStart.getDate()).padStart(2, "0")}`;
 
-    const weekProducts = allProducts.filter((product) => {
+    const weekProducts = allProducts.filter((product: ProductSummary) => {
       const productDate = new Date(product.createdAt);
       return productDate >= weekStart && productDate <= weekEnd;
     });
