@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -6,7 +7,7 @@ async function main() {
 
   // Create sample products
   await prisma.product.createMany({
-    data: Array.from({ length: 25 }).map((_, i) => ({
+    data: Array.from({ length: 90 }).map((_, i) => ({
       userId: demoUserId,
       name: `Product ${i + 1}`,
       price: (Math.random() * 90 + 10).toFixed(2),

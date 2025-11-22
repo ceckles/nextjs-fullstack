@@ -1,3 +1,5 @@
+import { M_PLUS_1 } from "next/font/google";
+import Pagination from "@/components/pagination";
 import Sidebar from "@/components/sidebar";
 import { deleteProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
@@ -9,14 +11,31 @@ import { prisma } from "@/lib/prisma";
 export default async function InventoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; page?: string }>;
 }) {
   const user = await getCurrentUser();
+  const userId = user.id;
+
   const params = await searchParams;
   const q = (params.q ?? "").trim();
-  const products = await prisma.product.findMany({
-    where: { userId: user.id, name: { contains: q, mode: "insensitive" } },
-  });
+  const pageSize = 10;
+
+  //added math.ceil to round up to the nearest whole number
+  const page = Math.max(1, Number(params.page ?? 1));
+
+  const where = {
+    userId,
+    ...(q ? { name: { contains: q, mode: "insensitive" as const } } : {}),
+  };
+
+  //Pagination
+  const [totalCount, items] = await Promise.all([
+    prisma.product.count({ where }),
+    //
+    prisma.product.findMany({ where, orderBy: { createdAt: "desc" }, skip: (page - 1) * pageSize, take: pageSize }),
+  ]);
+
+  const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -77,11 +96,11 @@ export default async function InventoryPage({
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {products.map((product) => (
+                {items.map((product) => (
                   <tr
                     key={product.id}
                     className={
-                      products.indexOf(product) % 2 === 0
+                      items.indexOf(product) % 2 === 0
                         ? "bg-white hover:bg-gray-100"
                         : "bg-blue-50 hover:bg-gray-100"
                     }
@@ -126,6 +145,17 @@ export default async function InventoryPage({
               </tbody>
             </table>
           </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="bg-white rounded-lg border border-grey-200 p-6">
+              <Pagination
+                totalPages={totalPages}
+                currentPage={page}
+                baseUrl="/inventory"
+                searchParams={{ q, page: page.toString() }}
+              />
+            </div>
+          )}
         </div>
       </main>
     </div>
