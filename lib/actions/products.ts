@@ -16,11 +16,8 @@ const productSchema = z.object({
 
 export async function deleteProduct(formData: FormData) {
   //Server Action to delete a product
-  //ensure user is authenticated able to delete product if not redirect to sign-in.
+  //getCurrentUser() will redirect to sign-in if user is not authenticated
   const user = await getCurrentUser();
-  if (!user) {
-    redirect("/sign-in");
-  }
 
   const id = formData.get("productId");
 
@@ -38,11 +35,8 @@ export async function deleteProduct(formData: FormData) {
 
 export async function createProduct(formData: FormData) {
   //Server action to create a product
-  //ensure user is authenticated able to create product if not redirect to sign-in.
+  //getCurrentUser() will redirect to sign-in if user is not authenticated
   const user = await getCurrentUser();
-  if (!user) {
-    redirect("/sign-in");
-  }
 
   //Parse form data and validate it using Zod
   const parsed = productSchema.safeParse({

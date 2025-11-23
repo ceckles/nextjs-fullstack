@@ -71,7 +71,17 @@ This will automatically run `prisma generate` via the `postinstall` script.
    - `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY`
    - `STACK_SECRET_SERVER_KEY`
 
-### 4. Configure Environment Variables
+### 4. Initialize Stack Auth
+
+Run the Stack Auth initialization command:
+
+```bash
+npx @stackframe/init-stack . --no-browser
+```
+
+This will set up the necessary Stack Auth configuration files in your project.
+
+### 5. Configure Environment Variables
 
 Create a `.env` file in the root directory:
 
@@ -85,7 +95,7 @@ NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY='your-publishable-key'
 STACK_SECRET_SERVER_KEY='your-secret-key'
 ```
 
-### 5. Set Up Prisma
+### 6. Set Up Prisma
 
 Generate Prisma Client and run migrations:
 
@@ -97,7 +107,7 @@ pnpm prisma generate
 pnpm prisma migrate dev --name init
 ```
 
-### 6. Seed the Database (Optional)
+### 7. Seed the Database (Optional)
 
 Populate the database with sample data:
 
@@ -105,7 +115,7 @@ Populate the database with sample data:
 node prisma/seed.ts
 ```
 
-### 7. Start Development Server
+### 8. Start Development Server
 
 ```bash
 pnpm dev
