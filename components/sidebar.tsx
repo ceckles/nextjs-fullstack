@@ -18,12 +18,12 @@ export default function Sidebar({
   ];
 
   return (
-    <div className="fixed left-0 top-0 bg-gray-900 text-white w-64 min-h-screen">
+    <div className="fixed left-0 top-0 bg-gray-900 text-white w-64 min-h-screen p-6 z-10">
       <div className="mb-8">
         <div className="flex item-center space-x-2 mb-4">
-          <BarChart3 className="w-7 h-7" />
+          <BarChart3 className="w-5 h-5" />
 
-          <span className="text-lg font-semibold">Inventory App</span>
+          <span className="text-lg font-semibold">Inventory Manager</span>
         </div>
       </div>
       <nav className="space-y-1">
@@ -50,11 +50,11 @@ export default function Sidebar({
         })}
       </nav>
 
-<div className="absolute bottom-0 left-0 right-0 p-6 borter-t border-gray-700">
-  <div className="flex items-center justify-between">
-    <UserButton showUserInfo />
-  </div>
-</div>
-</div>
-);
+      <div className="absolute bottom-0 left-0 right-0 p-6 borter-t border-gray-700">
+        <div className="flex items-center justify-between">
+          <UserButton showUserInfo />
+        </div>
+      </div>
+    </div>
+  );
 }
