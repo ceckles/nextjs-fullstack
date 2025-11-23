@@ -58,6 +58,7 @@ export async function createProduct(formData: FormData) {
   }
   try {
     await prisma.product.create({
+      //spread the parsed data and add the user id to the data
       data: { ...parsed.data, userId: user.id },
     });
     redirect("/inventory");
