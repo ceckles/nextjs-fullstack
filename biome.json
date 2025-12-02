@@ -20,23 +20,9 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off",
-        "noExplicitAny": {
-          "level": "warn"
-        }
+        "noExplicitAny": "warn"
       }
     },
-    "overrides": [
-      {
-        "include": ["tests/**"],
-        "linter": {
-          "rules": {
-            "suspicious": {
-              "noExplicitAny": "off"
-            }
-          }
-        }
-      }
-    ],
     "domains": {
       "next": "recommended",
       "react": "recommended"
