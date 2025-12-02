@@ -177,6 +177,15 @@ pnpm start            # Start production server
 # Code Quality
 pnpm lint             # Run Biome linter
 pnpm format           # Format code with Biome
+pnpm type-check       # Run TypeScript type checking
+
+# Testing
+pnpm test             # Run unit tests
+pnpm test:watch       # Run tests in watch mode
+pnpm test:ui          # Run tests with UI
+pnpm test:e2e         # Run E2E tests with Playwright
+pnpm test:e2e:ui      # Run E2E tests with UI
+pnpm test:all         # Run all tests (unit + E2E)
 
 # Database
 pnpm prisma generate  # Generate Prisma Client
@@ -237,7 +246,109 @@ pnpm prisma db pull
   pnpm prisma migrate deploy
   ```
 
-## 🧪 Testing the Application
+## 🔄 CI/CD Pipeline
+
+This project includes automated CI/CD pipelines via GitHub Actions:
+
+### CI Pipeline (`.github/workflows/ci.yml`)
+
+Runs on every pull request and push to `main` or `develop` branches:
+
+1. **Build & Type Check** - Validates TypeScript and builds the application
+2. **Lint** - Runs Biome linter to check code quality
+3. **Security Scan** - Runs npm audit and Snyk security scanning
+4. **Frontend Tests** - Runs unit tests for frontend components
+5. **Backend Tests** - Runs unit tests for backend/server actions
+6. **E2E Tests** - Runs Playwright end-to-end tests
+
+### Dev Deployment (`.github/workflows/deploy-dev.yml`)
+
+Automatically deploys to Vercel development environment when code is pushed to `develop` branch:
+
+1. Builds the application
+2. Deploys to Vercel (dev environment)
+3. Runs health check to verify deployment
+
+### Production Deployment (`.github/workflows/deploy-prod.yml`)
+
+Deploys to production when code is pushed to `main` branch:
+
+1. Builds the application for production
+2. Deploys to Vercel (production environment)
+3. Runs production health check
+4. Executes post-deployment tests
+
+### Required GitHub Secrets
+
+Configure these secrets in your GitHub repository settings:
+
+**For CI:**
+- `DATABASE_URL` - Database connection string
+- `NEXT_PUBLIC_STACK_PROJECT_ID` - Stack Auth project ID
+- `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY` - Stack Auth publishable key
+- `STACK_SECRET_SERVER_KEY` - Stack Auth secret key
+- `SNYK_TOKEN` (optional) - For Snyk security scanning
+
+**For Deployment:**
+- `VERCEL_TOKEN` - Vercel authentication token
+- `VERCEL_ORG_ID` - Vercel organization ID
+- `VERCEL_PROJECT_ID_DEV` - Vercel dev project ID
+- `VERCEL_PROJECT_ID_PROD` - Vercel production project ID
+- `VERCEL_PROD_URL` - Production deployment URL
+
+## 🧪 Testing
+
+### Test Setup
+
+This project includes comprehensive testing with:
+
+- **Vitest** - Unit and integration testing
+- **Playwright** - End-to-end testing
+- **Testing Library** - React component testing utilities
+
+### Running Tests
+
+```bash
+# Run all unit tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run E2E tests
+pnpm test:e2e
+
+# Run all tests (unit + E2E)
+pnpm test:all
+```
+
+### Test Structure
+
+```
+tests/
+├── unit/              # Unit tests
+│   ├── lib/           # Library function tests
+│   └── api/           # API route tests
+└── e2e/               # End-to-end tests
+    ├── health-check.spec.ts
+    └── navigation.spec.ts
+```
+
+### Health Check Endpoint
+
+The application includes a health check endpoint at `/api/health` that returns the status of the application and database connectivity. This is used by CI/CD pipelines for deployment verification.
+
+### CI/CD Testing
+
+GitHub Actions workflows automatically run:
+- Type checking
+- Linting
+- Security scanning
+- Unit tests (frontend & backend)
+- E2E tests
+- Health checks after deployment
+
+## 🎮 Testing the Application Manually
 
 1. **Sign In**: Use Stack Auth to create an account or sign in
 2. **Add Products**: Navigate to "Add Product" and create some products

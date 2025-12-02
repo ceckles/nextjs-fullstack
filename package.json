@@ -8,7 +8,14 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "pnpm test && pnpm test:e2e",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@prisma/client": "^6.18.0",
@@ -22,12 +29,19 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@playwright/test": "^1.48.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/ui": "^2.1.8",
+    "jsdom": "^25.0.1",
     "prisma": "^6.18.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.8"
   }
 }
