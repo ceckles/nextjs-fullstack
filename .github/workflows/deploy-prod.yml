@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://${{ secrets.VERCEL_PROD_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -48,16 +47,18 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PROD }}
 
-      - name: Get production URL
+      - name: Set production URL
         id: deployment
         run: |
+          # Use the VERCEL_PROD_URL secret for health checks
           PROD_URL="${{ secrets.VERCEL_PROD_URL }}"
           echo "url=$PROD_URL" >> $GITHUB_OUTPUT
 
       - name: Production Health Check
         run: |
           sleep 30
-          HEALTH_URL="${{ secrets.VERCEL_PROD_URL }}/api/health"
+          PROD_URL="${{ steps.deployment.outputs.url }}"
+          HEALTH_URL="$PROD_URL/api/health"
           echo "Checking production health at: $HEALTH_URL"
           
           for i in {1..15}; do
@@ -77,7 +78,7 @@ jobs:
 
       - name: Run Post-Deployment Tests
         run: |
-          BASE_URL="${{ secrets.VERCEL_PROD_URL }}"
+          BASE_URL="${{ steps.deployment.outputs.url }}"
           echo "Running post-deployment tests against: $BASE_URL"
           
           # Test health endpoint
