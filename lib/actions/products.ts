@@ -11,7 +11,7 @@ const productSchema = z.object({
   price: z.coerce.number().nonnegative("Price must be non-negative"),
   quantity: z.coerce.number().int().min(0, "Quantity must be non-negative"),
   sku: z.string().optional(),
-  lowStockthreshold: z.coerce.number().int().min(0).optional(),
+  lowStockThreshold: z.coerce.number().int().min(0).optional(),
 });
 
 export async function deleteProduct(formData: FormData) {
@@ -44,7 +44,7 @@ export async function createProduct(formData: FormData) {
     price: formData.get("price"),
     quantity: formData.get("quantity"),
     sku: formData.get("sku") || undefined,
-    lowStockThreshold: formData.get("lowStockthreshold") || undefined,
+    lowStockThreshold: formData.get("lowstockthreshold") || undefined,
   });
 
   if (!parsed.success) {
