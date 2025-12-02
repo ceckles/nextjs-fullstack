@@ -246,9 +246,9 @@ pnpm prisma db pull
   pnpm prisma migrate deploy
   ```
 
-## 🔄 CI/CD Pipeline
+## 🔄 CI Pipeline
 
-This project includes automated CI/CD pipelines via GitHub Actions:
+This project includes an automated CI pipeline via GitHub Actions:
 
 ### CI Pipeline (`.github/workflows/ci.yml`)
 
@@ -261,23 +261,6 @@ Runs on every pull request and push to `main` or `develop` branches:
 5. **Backend Tests** - Runs unit tests for backend/server actions
 6. **E2E Tests** - Runs Playwright end-to-end tests
 
-### Dev Deployment (`.github/workflows/deploy-dev.yml`)
-
-Automatically deploys to Vercel development environment when code is pushed to `develop` branch:
-
-1. Builds the application
-2. Deploys to Vercel (dev environment)
-3. Runs health check to verify deployment
-
-### Production Deployment (`.github/workflows/deploy-prod.yml`)
-
-Deploys to production when code is pushed to `main` branch:
-
-1. Builds the application for production
-2. Deploys to Vercel (production environment)
-3. Runs production health check
-4. Executes post-deployment tests
-
 ### Required GitHub Secrets
 
 Configure these secrets in your GitHub repository settings:
@@ -288,13 +271,6 @@ Configure these secrets in your GitHub repository settings:
 - `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY` - Stack Auth publishable key
 - `STACK_SECRET_SERVER_KEY` - Stack Auth secret key
 - `SNYK_TOKEN` (optional) - For Snyk security scanning
-
-**For Deployment:**
-- `VERCEL_TOKEN` - Vercel authentication token
-- `VERCEL_ORG_ID` - Vercel organization ID
-- `VERCEL_PROJECT_ID_DEV` - Vercel dev project ID
-- `VERCEL_PROJECT_ID_PROD` - Vercel production project ID
-- `VERCEL_PROD_URL` - Production deployment URL
 
 ## 🧪 Testing
 
