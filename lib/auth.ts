@@ -1,5 +1,5 @@
-import { stackServerApp } from "@/stack/server";
 import { redirect } from "next/navigation";
+import { stackServerApp } from "@/stack/server";
 
 /**
  * Gets the current logged-in user. Redirects to sign-in if not authenticated.

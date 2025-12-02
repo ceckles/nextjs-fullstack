@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackClientApp } from "../stack/client";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { stackClientApp } from "../stack/client";
 import "./globals.css";
 
 // Font setup - Geist Sans for UI, Geist Mono for code
@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Inventory Management",
-  description: "Streamline your inventory tracking with our powerful, easy-to-use management system",
+  description:
+    "Streamline your inventory tracking with our powerful, easy-to-use management system",
 };
 
 /**
@@ -32,9 +33,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><StackProvider app={stackClientApp}><StackTheme>
-        {children}
-      </StackTheme></StackProvider></body>
+      >
+        <StackProvider app={stackClientApp}>
+          <StackTheme>{children}</StackTheme>
+        </StackProvider>
+      </body>
     </html>
   );
 }

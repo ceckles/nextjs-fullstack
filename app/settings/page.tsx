@@ -3,7 +3,7 @@ import Sidebar from "@/components/sidebar";
 import { getCurrentUser } from "@/lib/auth";
 
 export default async function SettingsPage() {
-  const user = await getCurrentUser();
+  await getCurrentUser(); // Ensure user is authenticated
 
   return (
     <div className="min-h-screen bg-gray-50">

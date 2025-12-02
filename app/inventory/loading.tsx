@@ -32,16 +32,21 @@ export default function InventoryLoading() {
             <table className="w-full">
               <thead className="bg-gray-55">
                 <tr>
-                  {["Name", "SKU", "Price", "Quantity", "Low Stock", "Actions"].map(
-                    (header) => (
-                      <th
-                        key={header}
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                      >
-                        <div className="h-4 w-20 bg-gray-300 rounded animate-pulse" />
-                      </th>
-                    ),
-                  )}
+                  {[
+                    "Name",
+                    "SKU",
+                    "Price",
+                    "Quantity",
+                    "Low Stock",
+                    "Actions",
+                  ].map((header) => (
+                    <th
+                      key={header}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                    >
+                      <div className="h-4 w-20 bg-gray-300 rounded animate-pulse" />
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -94,5 +99,3 @@ export default function InventoryLoading() {
     </div>
   );
 }
-
-

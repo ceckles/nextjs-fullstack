@@ -66,11 +66,11 @@ export default function Pagination({
         <ChevronLeft />
         Prevous
       </Link>
-      {visablePages.map((page, key) => {
+      {visablePages.map((page, index) => {
         if (page === "...")
           return (
             <span
-              key={key}
+              key={`ellipsis-${index}`}
               className="px-3 py-2 text-sm font-medium rounded-lg text-gray-500"
             >
               ...
@@ -82,7 +82,7 @@ export default function Pagination({
         return (
           <Link
             href={getPageUrl(pageNumber)}
-            key={key}
+            key={`page-${pageNumber}`}
             className={`px-3 py-2 text-sm font-medium rounded-lg 
             ${isCurrentPage ? "bg-purple-600 text-white" : "text-gray-700 hover:bg-gray-100 bg-white border border-gray-300"}`}
           >

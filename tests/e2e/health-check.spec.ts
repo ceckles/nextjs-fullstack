@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test.describe("Health Check", () => {
   test("should return healthy status", async ({ request }) => {
@@ -22,4 +22,3 @@ test.describe("Health Check", () => {
     expect(data.services).toHaveProperty("api");
   });
 });
-

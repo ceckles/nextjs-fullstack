@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createProduct, deleteProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
@@ -16,6 +16,12 @@ vi.mock("@/lib/prisma", () => ({
 
 vi.mock("next/navigation", () => ({
   redirect: vi.fn(),
+}));
+
+vi.mock("@/stack/server", () => ({
+  stackServerApp: {
+    getUser: vi.fn(),
+  },
 }));
 
 describe("Product Actions", () => {
@@ -103,4 +109,3 @@ describe("Product Actions", () => {
     });
   });
 });
-

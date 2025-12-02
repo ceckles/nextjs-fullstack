@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test.describe("Navigation", () => {
   test("should load home page", async ({ page }) => {
@@ -21,4 +21,3 @@ test.describe("Navigation", () => {
     await expect(signInLink).toBeVisible();
   });
 });
-
