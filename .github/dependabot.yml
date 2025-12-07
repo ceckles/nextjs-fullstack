@@ -20,8 +20,4 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
-    # Ignore major version updates for these packages (uncomment if needed)
-    # ignore:
-    #   - dependency-name: "*"
-    #     update-types: ["version-update:semver-major"]
 
