@@ -1,29 +1,35 @@
-# Next.js Fullstack Inventory Management
+# 📦 Next.js Fullstack Inventory Management
 
-A test fullstack application built with Next.js 16, featuring an inventory management system with authentication, product management, and analytics dashboard.
+A modern fullstack application built with Next.js 16, featuring an inventory management system with authentication, product management, and analytics dashboard.
+
+![Next.js](https://img.shields.io/badge/Next.js-16.0.7-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=flat-square&logo=typescript)
+![Prisma](https://img.shields.io/badge/Prisma-6.19.0-2D3748?style=flat-square&logo=prisma)
+![Stack Auth](https://img.shields.io/badge/Stack%20Auth-2.8.54-6366F1?style=flat-square)
 
 ## 🚀 Tech Stack
 
 ### Frontend
-- **Next.js 16.0.0** - React framework with App Router
-- **React 19.2.0** - UI library
-- **TypeScript 5** - Type safety
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **Lucide React** - Icon library
-- **Recharts** - Chart library for data visualization
+- ⚡ **Next.js 16.0.7** - React framework with App Router
+- ⚛️ **React 19.2.0** - UI library
+- 📘 **TypeScript 5.9.3** - Type safety
+- 🎨 **Tailwind CSS 4** - Utility-first CSS framework
+- ✨ **Lucide React** - Icon library
+- 📊 **Recharts** - Chart library for data visualization
 
 ### Backend
-- **Next.js Server Actions** - Server-side logic
-- **Prisma 6.18.0** - Type-safe database ORM
-- **PostgreSQL** (via Neon) - Database
-- **Zod** - Schema validation
+- 🔧 **Next.js Server Actions** - Server-side logic
+- 🗄️ **Prisma 6.19.0** - Type-safe database ORM
+- 🐘 **PostgreSQL** (via Neon) - Database
+- 🛡️ **Zod** - Schema validation
 
 ### Authentication
-- **Stack Auth** - Authentication and user management (configured within Neon)
+- 🔐 **Stack Auth** - Authentication and user management (configured within Neon)
 
 ### Development Tools
-- **Biome** - Fast formatter and linter
-- **Turbopack** - Fast bundler (Next.js default)
+- ✅ **Biome** - Fast formatter and linter
+- ⚡ **Turbopack** - Fast bundler (Next.js default)
 
 ## ✨ Features
 
@@ -34,14 +40,16 @@ A test fullstack application built with Next.js 16, featuring an inventory manag
 - 🎨 **Modern UI** - Clean, responsive design with Tailwind CSS
 - 🔍 **Search** - Real-time product search functionality
 - 📈 **Analytics** - Product trends and stock level visualizations
+- ⚡ **Performance** - Optimized with Next.js 16 and Turbopack
+- 🔒 **Type Safety** - Full TypeScript coverage with Prisma
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have:
 
-- **Node.js** 20.x or higher
-- **pnpm** (or npm/yarn)
-- A **Neon** account (for PostgreSQL database and Stack Auth)
+- 💻 **Node.js** 20.x or higher
+- 📦 **pnpm** (or npm/yarn)
+- ☁️ A **Neon** account (for PostgreSQL database and Stack Auth)
 
 ## 🛠️ Setup Instructions
 
